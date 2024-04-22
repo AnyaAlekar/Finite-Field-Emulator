@@ -16,3 +16,7 @@ This is a finite field emulator that functions as a arithmetic calculator for po
 - Next, the program presents to the user a dropdown list of all polynomials in the field Fp^m i.e. polynomials of degree less than m in field Fp.
 - The user can choose from the field elements and operators and enter an expression for the calculator to parse.
 - The calculator displays the resulting polynomial on the screen.
+
+#### Error Detection
+![Error Detection](output/Error_due_to_wrong_expression_or zero_division.png)
+- The parser detects an invalid expression for example, unbalanced parenthesis, zero division and etc.
