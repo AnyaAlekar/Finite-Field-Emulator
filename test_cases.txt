@@ -1,0 +1,15 @@
+Disclaimer:
+- Test cases with values for p and m and an irreducible polynomial of degree m in field Fp
+- Polynomials are in the form of lists of coefficients from lowest to highest degree of x
+
+p = 2
+m = 3
+Irreducible polynomial = [1, 1, 0, 1]
+
+p = 7
+m = 3
+Irreducible polynomial = [1, 1, 0, 1]
+
+p = 2
+m = 8
+Irreducible polynomial = [1, 0, 0, 1, 0, 1, 0, 1, 1]
