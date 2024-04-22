@@ -3,7 +3,7 @@ This is a finite field emulator that functions as a arithmetic calculator for po
 **Python**: The program has been written entirely in python. The GUI has been created using the library tkinter
 
 #### GUI
-![The emulator has buttons for field elements and arithmetic operations.](path)
+![The emulator has buttons for field elements and arithmetic operations.](output/calculator_view.png)
 
 #### Working
 - The program takes as input a prime number p, an integer m and an irreducible polynomial of degree m in the field Fp.
