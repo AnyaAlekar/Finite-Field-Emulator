@@ -486,7 +486,7 @@ def calculator(irreducible_poly, p, m):
                 return expressionTuple
             elif isinstance(expressionTuple, tuple):
                 operator, operator1, operator2 = expressionTuple
-                if(evaluateExpr(operator2) == 'Error' or evaluateExpr(operator1) == 'Error'): return 'Error'
+                if(operator1 == None or operator2 == None or evaluateExpr(operator2) == 'Error' or evaluateExpr(operator1) == 'Error' or evaluateExpr(operator2) == [] or evaluateExpr(operator2) == ''): return 'Error'
                 if operator == '+':
                     return add(evaluateExpr(operator1), evaluateExpr(operator2))
                 elif operator == '-':
@@ -494,7 +494,7 @@ def calculator(irreducible_poly, p, m):
                 elif operator == '*':
                     return multiply(evaluateExpr(operator1), evaluateExpr(operator2))
                 elif operator == '/':
-                    if(evaluateExpr(operator2) == [0] or evaluateExpr(operator2) == [0.0]): return 'Error'
+                    if(evaluateExpr(operator2) == [0] or evaluateExpr(operator2) == [0.0] or evaluateExpr(operator2) == [] or evaluateExpr(operator2) == ''): return 'Error'
                     return multiply(evaluateExpr(operator1), inverse[tuple(evaluateExpr(operator2))])
                 
         e = parse(current_input)
