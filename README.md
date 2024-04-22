@@ -18,5 +18,5 @@ This is a finite field emulator that functions as a arithmetic calculator for po
 - The calculator displays the resulting polynomial on the screen.
 
 #### Error Detection
-![Error Detection](output/Error_due_to_wrong_expression_or_zero_division.png)
-- The parser detects an invalid expression for example, unbalanced parenthesis, zero division and etc.
+![Error Detection](output/Error.png)
+- The parser detects an invalid expression for example, unbalanced parenthesis, zero division, etc.
