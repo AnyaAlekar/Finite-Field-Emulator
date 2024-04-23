@@ -257,6 +257,12 @@ def calculator(irreducible_poly, p, m):
     def append_field_element():
         selected_element = field_element_combobox.get()
         current_input = input_textbox.get("1.0", tk.END).strip()  # Get current input text
+        if(current_input == 'Error'): 
+            all_clear()
+            current_input = ""
+        if(current_input in field_elements_polynomials):
+            all_clear()
+            current_input = field_elements_polynomials[current_input]
         new_input = f"{current_input} {field_elements_polynomials[selected_element]}"  # Append selected element
         input_textbox.delete("1.0", tk.END)  # Clear current input
         input_textbox.insert(tk.END, new_input)  # Set new input
@@ -268,6 +274,12 @@ def calculator(irreducible_poly, p, m):
     # Function to update input text box
     def append_operator(button_label):
         current_input = input_textbox.get("1.0", tk.END).strip()  # Get current input text
+        if(current_input == 'Error'): 
+            all_clear()
+            current_input = ""
+        if(current_input in field_elements_polynomials):
+            all_clear()
+            current_input = field_elements_polynomials[current_input]
         new_input = f"{current_input} {button_label}"  # Build new input
         input_textbox.delete("1.0", tk.END)  # Clear current input
         input_textbox.insert(tk.END, new_input)  # Set new input
@@ -505,7 +517,11 @@ def calculator(irreducible_poly, p, m):
     def submit():
         current_input = input_textbox.get("1.0", tk.END).strip()  # Get current input text
         ans = calculate(current_input)
-        if(ans != 'Error'): ans = generate_polynomial(ans)
+        if(ans != 'Error'): 
+            for i in field_elements_polynomials:
+                if(field_elements_polynomials[i] == ans): 
+                    ans = i
+                    break            
         input_textbox.delete("1.0", tk.END)  # Clear current input
         input_textbox.insert(tk.END, ans)  # Set new input
     
