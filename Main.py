@@ -391,7 +391,7 @@ def calculator(irreducible_poly, p, m):
                     rightHandExpression = parsePrimaryExpression()
                     expression = (token, expression, rightHandExpression)
                     token = tokenStackElement()
-                return expression
+                return expression 
             
             def parseExpression():
                 expression = parseMulExpression()
