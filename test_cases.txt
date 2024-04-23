@@ -13,3 +13,19 @@ Irreducible polynomial = [1, 1, 0, 1]
 p = 2
 m = 8
 Irreducible polynomial = [1, 0, 0, 1, 0, 1, 0, 1, 1]
+
+p = 5
+m = 6
+Irreducible polynomial = [3, 4, 2, 4, 2, 3, 1] 
+
+p = 11
+m = 4
+Irreducible polynomial = [2, 4, 3, 3, 1]
+
+p = 11
+m = 2
+Irreducible polynomial = [8, 5, 1]
+
+p = 13
+m = 2
+Irreducible polynomial = [8, 5, 1]
