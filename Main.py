@@ -33,6 +33,7 @@ def define_field(p, m, irreducible_poly):
             poly.pop()   # normalize
         return len(poly)-1
 
+    #in a field mod p, n and n + p are congurent
     def congruence(n,m):
         while ((n % p) % m) != 0:
             n = n + p
