@@ -147,7 +147,7 @@ def go_to_next_page(entry1, entry2):
         entry2.delete(0, tk.END)
 
 def generate_irreducible_poly(p, m, entries):
-    # Create the irreducible_poly format
+    # Created the irreducible_poly format
     irreducible_poly = ""
     for i in range(m + 1):
         entries[i] %= p
@@ -158,16 +158,16 @@ def generate_irreducible_poly(p, m, entries):
     return irreducible_poly
 
 def next_page(p, m):
-    # Create the next page 
+    # Created the next page 
     next_page_window = tk.Toplevel(root)
     next_page_window.title("Irreducible Polynomial")
     next_page_window.geometry('590x500')
     
-    # Create heading label
+    # Created heading label
     heading_label = ttk.Label(next_page_window, text="Enter Coefficients of Irreducible Polynomial", font=("Helvetica", 20, "bold"))
     heading_label.grid(row=0, column=0, columnspan=2, pady=5)
     
-    # Create entry widgets 
+    # Created entry widgets 
     entries = []
     for i in range(m + 1):
         # Negative and 0 are allowed, if blank then assume 0 and throw error at which coefficients user did not enter correct value
@@ -177,7 +177,7 @@ def next_page(p, m):
         entry.grid(row=i+1, column=1, padx=5, pady=5)
         entries.append(entry)
             
-    # Create button to generate irreducible_poly
+    # Created button to generate irreducible_poly
     generate_button = ttk.Button(next_page_window, text="Generate Irreducible Polynomial", command=lambda: show_irreducible_poly(p, m, entries, next_page_window))
     generate_button.grid(row=m + 2, column=0, columnspan=2, padx=5, pady=10)
 
@@ -208,7 +208,7 @@ def show_irreducible_poly(p, m, entries, next_page_window):
         irreducible_poly = generate_irreducible_poly(p, m, values)
         next_page_window.destroy()
         
-        # Create label to display the irreducible_poly
+        # Created label to display the irreducible_poly
         irreducible_poly_label = ttk.Label(root, text="Irreducible Polynomial Entered")
         irreducible_poly_label.pack()
         irreducible_poly_text = tk.Text(root, height=2, width=60)
@@ -221,7 +221,7 @@ def show_irreducible_poly(p, m, entries, next_page_window):
         calc_button.pack(pady=10)
         
 def calculator(irreducible_poly, p, m):
-    # Create the new popup window
+    # Created the new popup window
     calculator_window = tk.Toplevel(root)
     calculator_window.title("Calculator")
     calculator_window.geometry("500x500")
@@ -231,23 +231,23 @@ def calculator(irreducible_poly, p, m):
     for ele in field_elements:
         field_elements_polynomials[generate_polynomial(ele)] = ele
         
-    # Create a heading for the calculator page
+    # Created a heading for the calculator page
     heading_label = ttk.Label(calculator_window, text="Calculator", font=("Helvetica", 20, "bold"))
     heading_label.pack(pady=10)
     
-    # Create a text box to display the input
+    # Created a text box to display the input
     input_textbox = tk.Text(calculator_window, height=2, width=60)
     input_textbox.pack(pady=10)
     
-    # Create a dropdown menu with p ** m elements    
+    # Created a dropdown menu with p ** m elements    
     label_frame = ttk.Frame(calculator_window)
     label_frame.pack(pady=10)
 
-    # Create a label for the dropdown menu
+    # Created a label for the dropdown menu
     label = ttk.Label(label_frame, text="Field Elements:   ")
     label.pack(side=tk.LEFT)
 
-    # Create a Combobox with rounded corners
+    # Created a Combobox with rounded corners
     combobox_style = ttk.Style()
     combobox_style.configure('Rounded.TCombobox', borderwidth=1, relief="solid", padding=5, bordercolor="gray", fieldbackground="white", foreground="black")
     field_element_combobox = ttk.Combobox(label_frame, style='Rounded.TCombobox')
@@ -268,7 +268,7 @@ def calculator(irreducible_poly, p, m):
         input_textbox.delete("1.0", tk.END)  # Clear current input
         input_textbox.insert(tk.END, new_input)  # Set new input
     
-    # Create "Enter" button for dropdown menu
+    # Created "Enter" button for dropdown menu
     enter_button = ttk.Button(label_frame, text="Enter", command=append_field_element)
     enter_button.pack(side=tk.LEFT, padx=5)
     
@@ -286,14 +286,14 @@ def calculator(irreducible_poly, p, m):
         input_textbox.insert(tk.END, new_input)  # Set new input
 
     
-    # Create buttons frame for operators
+    # Created buttons frame for operators
     operators_frame = ttk.Frame(calculator_window)
     operators_frame.pack(pady=10)
     
     # Button labels for operators
     operators = ['+', '-', '*', '/', '(', ')']
     
-    # Create operator buttons and assign functions to them
+    # Created operator buttons and assign functions to them
     for label in operators:
         button = ttk.Button(operators_frame, text=label, command=lambda label=label: append_operator(label))
         button.pack(side=tk.LEFT, padx=5)
@@ -526,41 +526,41 @@ def calculator(irreducible_poly, p, m):
         input_textbox.delete("1.0", tk.END)  # Clear current input
         input_textbox.insert(tk.END, ans)  # Set new input
     
-    # Create buttons frame for special buttons (AC, Backspace, Submit)
+    # Created buttons frame for special buttons (AC, Backspace, Submit)
     special_buttons_frame = ttk.Frame(calculator_window)
     special_buttons_frame.pack(pady=10)
     
-    # Create an All Clear button
+    # Created an All Clear button
     AC_button = ttk.Button(special_buttons_frame, text='AC', command=all_clear)
     AC_button.pack(side=tk.LEFT, padx=5)
     
-    # Create a backspace button with Unicode symbol
+    # Created a backspace button with Unicode symbol
     backspace_button = ttk.Button(special_buttons_frame, text='\u21e6', command=backspace)
     backspace_button.pack(side=tk.LEFT, padx=5)
     
-    # Create a Enter button with Unicode symbol
+    # Created a Enter button with Unicode symbol
     submit_button = ttk.Button(special_buttons_frame, text='=', command=submit)
     submit_button.pack(side=tk.LEFT, padx=5)
 
         
-# Create the main window
+# Created the main window
 root = tk.Tk()
 root.title("User Input")
 root.geometry("500x500")
 
-# Create heading label
+# Created heading label
 heading_label = ttk.Label(root, text="Specifications for Calculator", font=("Helvetica", 20, "bold"))
 heading_label.pack(pady=10)
 
-# Create frame for first set of entry widgets
+# Created frame for first set of entry widgets
 top_frame1 = ttk.Frame(root)
 top_frame1.pack(pady=10)
 
-# Create frame for second set of entry widgets
+# Created frame for second set of entry widgets
 top_frame2 = ttk.Frame(root)
 top_frame2.pack(pady=10)
 
-# Create entry widgets for numbers
+# Created entry widgets for numbers
 p_label = ttk.Label(top_frame1, text="Enter Prime Number p:")
 p_label.grid(row=0, column=0, pady=(10, 0), padx=10, sticky="e")
 entry1 = ttk.Entry(top_frame1)
@@ -571,7 +571,7 @@ m_label.grid(row=0, column=0, pady=(10, 0), padx=10, sticky="e")
 entry2 = ttk.Entry(top_frame2)
 entry2.grid(row=0, column=1, pady=(10, 0), padx=10)
 
-# Create button to go to next page
+# Created button to go to next page
 next_button = ttk.Button(root, text="Next", command=lambda: go_to_next_page(entry1, entry2))
 next_button.pack(pady=10)
 
