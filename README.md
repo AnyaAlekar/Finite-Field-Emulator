@@ -20,3 +20,9 @@ This is a finite field emulator that functions as an arithmetic calculator for p
 ## Error Detection
 ![Error Detection](output/Error.png)
 - The parser detects an invalid expression, for example, unbalanced parenthesis, zero division, etc.
+
+## Update (Display Multiplication Table)
+![image](https://github.com/AnyaAlekar/Finite-Field-Emulator/assets/98590820/f1316fe1-68ae-4431-951c-538966e3c7fd)
+- The display button generates a multiplication table showcasing the products of various field elements with every other field element
+
+
