@@ -2,6 +2,11 @@ This is a finite field emulator that functions as an arithmetic calculator for p
 ## Tech Stack
 **Python**: The program has been written entirely in Python. The GUI has been created using the library Tkinter
 
+## How to Run
+- Download the main.exe
+- Run the downloaded file on your machine (Windows)
+- The application is ready to use
+
 ## GUI
 ![Start page](output/start_page.png)
 1[](output/entering_irreducible_polynomial.png)
