@@ -1,6 +1,38 @@
 import tkinter as tk
 from tkinter import ttk
 
+#Multiplication table
+def create_table(root, data, columns):
+    # Create a frame to hold the treeview and the scrollbar
+    frame = ttk.Frame(root)
+    frame.pack(expand=True, fill='both')
+
+    # Add an extra column for row headers
+    all_columns = ['X'] + columns
+    
+    # Create a Treeview widget
+    tree = ttk.Treeview(frame, columns=all_columns, show='headings')
+
+    # Format columns
+    tree.column('X', width=100, minwidth=100, anchor='center')
+    tree.heading('X', text='X')
+
+    for column in columns:
+        tree.column(column, width=100, minwidth=100, anchor='center')
+        tree.heading(column, text=column) 
+
+    # Insert data into the treeview with row headers
+    for row_header, row in zip(columns, data):
+        tree.insert('', 'end', values=(row_header, *row))
+
+    # Add a vertical scrollbar
+    scrollbar = ttk.Scrollbar(frame, orient="vertical", command=tree.yview)
+    tree.configure(yscrollcommand=scrollbar.set)
+
+    # Pack the scrollbar and the treeview
+    scrollbar.pack(side='right', fill='y')
+    tree.pack(expand=True, fill='both')
+
 # Field Algebra
 def generate_polynomial(poly):
     ans = ""
@@ -24,6 +56,7 @@ def define_field(p, m, irreducible_poly):
     
     sol = generate_field_elements([], set(), 0)
     field_elements = list(map(list, sol))
+    field_elements.sort()
     for i in range(p ** m):
       while(field_elements[i] and field_elements[i][-1] == 0): field_elements[i].pop()
       if(field_elements[i] == []): field_elements[i] = [0]
@@ -97,6 +130,18 @@ def define_field(p, m, irreducible_poly):
         if(not ans): return [0]
         r = rem(ans, irreducible_poly)
         return r
+    
+    def mult_table():
+        #returns a list of list of polynomials
+        mult = []
+        for ele1 in field_elements:
+            temp = []
+            for ele2 in field_elements:
+                ele = multiply(ele1, ele2)
+                poly = generate_polynomial(ele)
+                temp.append(poly)
+            mult.append(temp)
+        return mult
   
     def divide(u, v):
         q, r = [0], u
@@ -127,8 +172,9 @@ def define_field(p, m, irreducible_poly):
         return d
     
     inverse = find_inverse()
+    multiplication_table = mult_table()
     
-    return field_elements, inverse
+    return field_elements, inverse, multiplication_table
 
 # GUI
 def go_to_next_page(entry1, entry2):
@@ -224,14 +270,15 @@ def calculator(irreducible_poly, p, m):
     # Created the new popup window
     calculator_window = tk.Toplevel(root)
     calculator_window.title("Calculator")
-    calculator_window.geometry("500x500")
+    calculator_window.geometry("2500x600")
     
-    field_elements, inverse = define_field(p, m, irreducible_poly)
+    field_elements, inverse, multiplication_table = define_field(p, m, irreducible_poly)
     field_elements_polynomials = {}
     for ele in field_elements:
         field_elements_polynomials[generate_polynomial(ele)] = ele
-        
-    # Created a heading for the calculator page
+    
+            
+    # Created a heading for the calculator page 
     heading_label = ttk.Label(calculator_window, text="Calculator", font=("Helvetica", 20, "bold"))
     heading_label.pack(pady=10)
     
@@ -526,9 +573,18 @@ def calculator(irreducible_poly, p, m):
         input_textbox.delete("1.0", tk.END)  # Clear current input
         input_textbox.insert(tk.END, ans)  # Set new input
     
+    def display():
+        columns = [i for i in field_elements_polynomials]
+        create_table(calculator_window, multiplication_table, columns)
+
     # Created buttons frame for special buttons (AC, Backspace, Submit)
     special_buttons_frame = ttk.Frame(calculator_window)
     special_buttons_frame.pack(pady=10)
+    
+    # Created buttons frame for display button
+    display_buttons_frame = ttk.Frame(calculator_window)
+    display_buttons_frame.pack(pady=15)
+    
     
     # Created an All Clear button
     AC_button = ttk.Button(special_buttons_frame, text='AC', command=all_clear)
@@ -541,8 +597,11 @@ def calculator(irreducible_poly, p, m):
     # Created a Enter button with Unicode symbol
     submit_button = ttk.Button(special_buttons_frame, text='=', command=submit)
     submit_button.pack(side=tk.LEFT, padx=5)
-
-        
+    
+    #Created a button for displaying multiplication table
+    display_button = ttk.Button(display_buttons_frame, text = 'Display', command=display)
+    display_button.pack(side = tk.LEFT, padx = 5)
+            
 # Created the main window
 root = tk.Tk()
 root.title("User Input")
