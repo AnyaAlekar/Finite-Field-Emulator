@@ -3,7 +3,9 @@ This is a finite field emulator that functions as an arithmetic calculator for p
 **Python**: The program has been written entirely in Python. The GUI has been created using the library Tkinter
 
 ## How to Run
-- Download the main.exe
+- Download the [main.exe](https://github.com/AnyaAlekar/Finite-Field-Emulator/blob/main/main.exe)
+  ![image](https://github.com/AnyaAlekar/Finite-Field-Emulator/assets/98590820/6008c0eb-f3b0-48b7-b251-d07ae1999899)
+
 - Run the downloaded file on your machine (Windows)
 - The application is ready to use
 
